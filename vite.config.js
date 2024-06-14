@@ -1,6 +1,8 @@
 import { defineConfig, transformWithEsbuild } from 'vite'
 import react from '@vitejs/plugin-react'
 
+import { fileURLToPath, URL } from 'node:url';// For Vite + PrimeReact
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -19,6 +21,12 @@ export default defineConfig({
     },
     react(),
   ],
+  
+  resolve: { // For Vite + PrimeReact
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
 
   optimizeDeps: {
     force: true,

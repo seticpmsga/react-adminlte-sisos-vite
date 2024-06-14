@@ -1,7 +1,10 @@
+import DataTableWithFilter from "./primereact_components/DataTableWithFilter";
+
 
 function Clientes() {
-    return (
 
+    return (
+        <div>
             <div className="content-wrapper">
                 {/* <!-- Content Header (Page header) --> */}
                 <section className="content-header">
@@ -26,8 +29,8 @@ function Clientes() {
 
                     {/* <!-- Default box --> */}
                     <div className="card">
-                        <div className="card-header">
-                            <h3 className="card-title">Title</h3>
+                        {/* <div className="card-header">
+                            <h3 className="card-title">Lista de Clientes</h3>
 
                             <div className="card-tools">
                                 <button type="button" className="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -37,26 +40,32 @@ function Clientes() {
                                     <i className="fas fa-times"></i>
                                 </button>
                             </div>
-                        </div>
+                        </div> */}
                         <div className="card-body">
-                            Start creating your amazing application!
+                            {/* PrimeReact DataTable */}
+                            <DataTableWithFilter/>
+                            {/* /. PrimeReact DataTable */}
                         </div>
                         {/* <!-- /.card-body --> */}
-                        <div className="card-footer">
+                        {/* <div className="card-footer">
                             Footer
-                        </div>
+                        </div> */}
                         {/* <!-- /.card-footer--> */}
                     </div>
                     {/* <!-- /.card --> */}
 
                 </section>
                 {/* <!-- /.content --> */}
-                
-            {/* <!-- /.content-wrapper --> */}
             </div>
+            {/* <!-- /.content-wrapper --> */}
 
+            {/* Continuar em https://primereact.org/datatable/
+                # Advanced
+                Assistir: https://www.youtube.com/watch?v=NbhoeLj6lBs
+            */}
+
+        </div>
     );
 }
 
 export default Clientes;
-

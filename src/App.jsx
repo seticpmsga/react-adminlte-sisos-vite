@@ -16,14 +16,14 @@ function App() {
 
       <Router>
         <Header/>
-        <Routes>
-          <Route path="/" element={<Dashboard/>}/>
-          <Route path="/ordenservico" element={<OrdenServico/>}/>
-          <Route path="/tiposservico" element={<TiposServico/>}/> 
-          <Route path="/secretarias" element={<Secretarias/>}/>
-          <Route path="/clientes" element={<Clientes/>}/>
-          <Route path="/orgao" element={<Orgao/>}/>
-        </Routes>
+            <Routes>
+              <Route path="/" element={<Dashboard/>}/>
+              <Route path="/ordenservico" element={<OrdenServico/>}/>
+              <Route path="/tiposservico" element={<TiposServico/>}/> 
+              <Route path="/secretarias" element={<Secretarias/>}/>
+              <Route path="/clientes" element={<Clientes/>}/>
+              <Route path="/orgao" element={<Orgao/>}/>
+            </Routes> 
         <SideNav/>
         <Footer/>
       </Router>
