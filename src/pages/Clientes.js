@@ -1,6 +1,5 @@
 import DataTableWithFilter from "./primereact_components/DataTableWithFilter";
 
-
 function Clientes() {
 
     return (
@@ -42,9 +41,11 @@ function Clientes() {
                             </div>
                         </div> */}
                         <div className="card-body">
+
                             {/* PrimeReact DataTable */}
-                            <DataTableWithFilter/>
+                                <DataTableWithFilter/>
                             {/* /. PrimeReact DataTable */}
+
                         </div>
                         {/* <!-- /.card-body --> */}
                         {/* <div className="card-footer">
