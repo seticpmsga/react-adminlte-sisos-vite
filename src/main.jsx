@@ -8,17 +8,18 @@ import App from './App.jsx'
  * npm i primeflex
  *  */ 
 import 'primeicons/primeicons.css';
-import 'primeflex/primeflex.css'; 
+// import 'primeflex/primeflex.css'; 
 
 /**
  * PrimeReact
  */
 import { PrimeReactProvider } from 'primereact/api';
-import 'primereact/resources/primereact.css';
+// import 'primereact/resources/primereact.css';
+// import 'primereact/resources/themes/md-light-indigo/theme.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 
-import './index.css';
-import './flags.css';
+// import './index.css';
+// import './flags.css';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(

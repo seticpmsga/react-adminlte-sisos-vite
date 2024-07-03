@@ -4,12 +4,12 @@ import SideNav from "./SideNav";
 import Footer from "./Footer";
 import Header from "./Header";
 
-import Dashboard from "../pages/Dashboard";
-import OrdenServico from "../pages/OrdenServico";
-import TiposServico from "../pages/TiposServico";
-import Secretarias from "../pages/Secretarias";
-import Clientes from "../pages/Clientes";
-import Orgao from "../pages/Orgao";
+import Dashboard from "../pages/dashboard/Content";
+import OrdenServico from "../pages/ordenservico/DataTableOs";
+import TiposServico from "../pages/tiposservico/DataTableTiposServico";
+import Secretarias from "../pages/secretarias/DataTableSecretarias";
+import Clientes from "../pages/clientes/ContentClientes";
+import Orgao from "../pages/orgao/DataTableOrgao";
 
 function ContentWrapper() {
     return (
