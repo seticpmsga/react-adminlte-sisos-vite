@@ -8,16 +8,26 @@ import { InputText } from "primereact/inputtext"
 import { IconField } from 'primereact/iconfield'
 import { InputIcon } from 'primereact/inputicon'
 
-import FormCliente from "./_AddCliente"
+import AddCliente from "./_AddCliente"
+import EditCliente from "./_EditCliente";
 
-export default function DataTableWithFilter() {
+export default function ListClientes() {
 
     const [filters, setFilters] = useState({
         global: { value: null, matchMode: FilterMatchMode.CONTAINS },
         name: { value: null, matchMode: FilterMatchMode.STARTS_WITH }
     })
+
+    const initFilters = () => {
+        setFilters({
+            global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+            name: { value: null, matchMode: FilterMatchMode.STARTS_WITH }
+        })
+    }
+
     const [globalFilterValue, setGlobalFilterValue] = useState('')
     const [formIn, setFormIn] = useState(false)
+    const [clienteData, setClienteData] = useState([])
     const [matriculaCliente, setMatriculaCliente] = useState([])
     const [clienteMatric, setClienteMatric] = useState([])
 
@@ -47,36 +57,6 @@ export default function DataTableWithFilter() {
 
         return listClientes
     }
-    
-    /* Editar Cliente */
-    const getClientesMatricula = async (matricula) => {
-            let cliente = []
-
-            try {
-              const response = await api.get(`/clientes/matricula?numero=${matricula}`)
-              cliente = response.data
-            } catch (error) {
-              console.error(error)
-            }
-
-        return cliente
-    }
-    
-    /* Cadastrar Cliente */
-    const postClientes = () => {
-        
-        api.post('/clientes', {
-            matricula: "15935",
-            nome: "Joana D'Ark",
-            email: "jd@gmail.com"
-          })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.error(error);
-          });
-    }
 
     const onGlobalFilterChange = (e) => {
         const value = e.target.value;
@@ -88,14 +68,19 @@ export default function DataTableWithFilter() {
         setGlobalFilterValue(value);
     }
 
-    const statusBodyTemplate = (props) => {
+    const statusBodyTemplate = (rowData) => {
 
         return (
             <>
                 <a className="btn bg-info btn-xs"
-                    data-toggle="modal" data-target="#modal-lg"
-                    onClick={() => { setFormIn(true); setMatriculaCliente(props.matricula); formRender(props.matricula) }}>
-                    <i className="fas fa-edit"></i> Editar - {props.matricula}
+                    data-toggle="modal" data-target="#edit-cliente"
+                    onClick={() => { 
+                        setFormIn(true)
+                        setClienteData(rowData)
+                        // setMatriculaCliente(props.matricula)
+                        // formRender(props.matricula) 
+                        }}>
+                    <i className="fas fa-edit"></i> Editar
                 </a>
                 &nbsp;
                 <a className="btn bg-warning btn-xs">
@@ -105,14 +90,14 @@ export default function DataTableWithFilter() {
         )
     };
 
-    const formRender = (matricula) => {
-        const dadosCliente = getClientesMatricula(matricula)
-        dadosCliente.then((cliente) => {
-            console.log(cliente[0].id)
-            setClienteMatric([cliente[0].id,cliente[0].matricula,cliente[0].nome])
-        })
+    // const formRender = (matricula) => {
+    //     const dadosCliente = getClientesMatricula(matricula)
+    //     dadosCliente.then((cliente) => {
+    //         console.log(cliente[0].id)
+    //         setClienteMatric([cliente[0].id,cliente[0].matricula,cliente[0].nome])
+    //     })
         
-    }
+    // }
 
     return (
         <div className="card-body">
@@ -129,8 +114,8 @@ export default function DataTableWithFilter() {
                     </div>
 
                     <div>
-                        <a className="btn btn-app" data-toggle="modal" data-target="#modal-lg" onClick={() => { postClientes() }}>
-                            <i className="fas fa-user-plus"></i> Adicionar Usuário
+                        <a className="btn btn-app" data-toggle="modal" data-target="#add-cliente">
+                            <i className="fas fa-user-plus"></i> Adicionar Cliente
                         </a>
                     </div>
 
@@ -147,10 +132,14 @@ export default function DataTableWithFilter() {
                 <Column body={statusBodyTemplate} />
             </DataTable>
 
-            {/* Componente FormCliente */}
+            {/* Componente AddCliente */}
             {/* ########################## */}
-            {}
-            <FormCliente cliente={clienteMatric} />
+            <AddCliente refreshData={ getClientes } />
+            {/* ########################## */}
+
+            {/* Componente EditCliente */}
+            {/* ########################## */}
+            <EditCliente ClienteData={clienteData} />
             {/* ########################## */}
 
         </div>

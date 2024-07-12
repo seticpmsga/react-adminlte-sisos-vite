@@ -1,4 +1,4 @@
-import DataTableWithFilter from "./_ListClientes";
+import ListClientes from "./_ListClientes";
 
 function Clientes() {
 
@@ -30,7 +30,7 @@ function Clientes() {
                     <div className="card">
 
                             {/* PrimeReact DataTable */}
-                                <DataTableWithFilter/>
+                                <ListClientes />
                             {/* /. PrimeReact DataTable */}
 
                         {/* <!-- /.card-body --> */}
