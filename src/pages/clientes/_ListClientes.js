@@ -134,7 +134,7 @@ export default function ListClientes() {
 
             {/* Componente AddCliente */}
             {/* ########################## */}
-            <AddCliente refreshData={ getClientes } />
+            <AddCliente />
             {/* ########################## */}
 
             {/* Componente EditCliente */}

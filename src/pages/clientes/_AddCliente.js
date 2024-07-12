@@ -8,7 +8,7 @@ import './clientes.css'
 
 import { useForm } from "react-hook-form"
 
-function AddCliente(props) {
+function AddCliente() {
     /**
      * Observação: 
      * Rota API REST Kotlin http://localhost:8080/clientes/matricula/19813
