@@ -40,7 +40,7 @@ function EditCliente(props) {
 
     const putCliente = async (clienteData) => {
         try {
-            const response = await api.put('/clientes/'+clienteData.id, clienteData);
+            const response = await api.put(`/clientes/${clienteData.id}`, clienteData);
             if (response) {
                 console.log(response.status);
             }

@@ -8,7 +8,7 @@ import App from './App.jsx'
  * npm i primeflex
  *  */ 
 import 'primeicons/primeicons.css';
-// import 'primeflex/primeflex.css'; 
+import 'primeflex/primeflex.css'; 
 
 /**
  * PrimeReact

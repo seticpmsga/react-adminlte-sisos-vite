@@ -7,9 +7,11 @@ import { FilterMatchMode } from "primereact/api"
 import { InputText } from "primereact/inputtext"
 import { IconField } from 'primereact/iconfield'
 import { InputIcon } from 'primereact/inputicon'
+import { ConfirmDialog } from 'primereact/confirmdialog'
 
 import AddCliente from "./_AddCliente"
-import EditCliente from "./_EditCliente";
+import EditCliente from "./_EditCliente"
+import DelCliente from "./_DelCliente"
 
 export default function ListClientes() {
 
@@ -18,19 +20,10 @@ export default function ListClientes() {
         name: { value: null, matchMode: FilterMatchMode.STARTS_WITH }
     })
 
-    const initFilters = () => {
-        setFilters({
-            global: { value: null, matchMode: FilterMatchMode.CONTAINS },
-            name: { value: null, matchMode: FilterMatchMode.STARTS_WITH }
-        })
-    }
-
     const [globalFilterValue, setGlobalFilterValue] = useState('')
     const [formIn, setFormIn] = useState(false)
     const [clienteData, setClienteData] = useState([])
-    const [matriculaCliente, setMatriculaCliente] = useState([])
-    const [clienteMatric, setClienteMatric] = useState([])
-
+ 
     /* Listar Clientes */
     const getClientes = () => {
 
@@ -57,7 +50,6 @@ export default function ListClientes() {
 
         return listClientes
     }
-
     const onGlobalFilterChange = (e) => {
         const value = e.target.value;
         let _filters = { ...filters };
@@ -67,6 +59,9 @@ export default function ListClientes() {
         setFilters(_filters);
         setGlobalFilterValue(value);
     }
+    /** ######## */
+    
+    /** ######## */
 
     const statusBodyTemplate = (rowData) => {
 
@@ -83,21 +78,13 @@ export default function ListClientes() {
                     <i className="fas fa-edit"></i> Editar
                 </a>
                 &nbsp;
-                <a className="btn bg-warning btn-xs">
-                    <i className="fas fa fa-trash"></i> Excluir
-                </a>
+                {/* Componente DelCliente */}
+                {/* ########################## */}
+                <DelCliente ClienteData={rowData}/>
+                {/* ########################## */}
             </>
         )
     };
-
-    // const formRender = (matricula) => {
-    //     const dadosCliente = getClientesMatricula(matricula)
-    //     dadosCliente.then((cliente) => {
-    //         console.log(cliente[0].id)
-    //         setClienteMatric([cliente[0].id,cliente[0].matricula,cliente[0].nome])
-    //     })
-        
-    // }
 
     return (
         <div className="card-body">
@@ -140,6 +127,11 @@ export default function ListClientes() {
             {/* Componente EditCliente */}
             {/* ########################## */}
             <EditCliente ClienteData={clienteData} />
+            {/* ########################## */}
+
+            {/* Complemento Componente DelCliente */}
+            {/* ########################## */}
+            <ConfirmDialog />
             {/* ########################## */}
 
         </div>
