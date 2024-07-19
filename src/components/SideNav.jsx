@@ -64,6 +64,12 @@ function SideNav() {
                                         </a>
                                     </li>
                                     <li className="nav-item">
+                                        <a href="#" className="nav-link" onClick={() => { navigate("/secretarias") }}>
+                                            <i className="far fa-circle text-info nav-icon" />
+                                            <p>Secretarias</p>
+                                        </a>
+                                    </li>
+                                    <li className="nav-item">
                                         <a href="#" className="nav-link" onClick={() => { navigate("/tiposservico") }}>
                                             <i className="far fa-circle text-info nav-icon" />
                                             <p>Tipos de Serviço</p>

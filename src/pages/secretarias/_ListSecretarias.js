@@ -9,39 +9,38 @@ import { IconField } from 'primereact/iconfield'
 import { InputIcon } from 'primereact/inputicon'
 import { ConfirmDialog } from 'primereact/confirmdialog'
 
-import AddCliente from "./_AddCliente"
-import EditCliente from "./_EditCliente"
-import DelCliente from "./_DelCliente"
+import AddSecretaria from "./_AddSecretaria"
+import EditSecretaria from "./_EditSecretaria"
+import DelSecretaria from "./_DelSecretaria"
 
-export default function ListClientes() {
+export default function ListSecretarias() {
 
     const [filters, setFilters] = useState({
         global: { value: null, matchMode: FilterMatchMode.CONTAINS },
-        name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
-        ativo: { value: true, matchMode: FilterMatchMode.EQUALS }
+        secretarias: { value: null, matchMode: FilterMatchMode.STARTS_WITH }
     })
 
     const [globalFilterValue, setGlobalFilterValue] = useState('')
     const [formIn, setFormIn] = useState(false)
-    const [clienteData, setClienteData] = useState([])
+    const [secretariaData, setSecretariaData] = useState([])
  
-    /* Listar Clientes */
-    const getClientes = () => {
+    /* Listar Secretarias */
+    const getSecretarias = () => {
 
-        const [listClientes, setListClientes] = useState([])
+        const [listSecretarias, setListSecretarias] = useState([])
 
         useEffect(() => {
-            api.get("/clientes")
+            api.get("/secretarias")
                 .then(function (response) {
                     // manipula o sucesso da requisição
-                    setListClientes(response.data)
+                    setListSecretarias(response.data)
                 })
                 .catch(function (error) {
                     // manipula erros da requisição
-                    setListClientes([{
+                    setListSecretarias([{
                         "id": "-",
-                        "matricula": "-----",
-                        "nome": error.message
+                        "secretaria": error.message,
+                        "Sigla": "-----"
                     }])
                 })
                 .finally(function () {
@@ -49,7 +48,7 @@ export default function ListClientes() {
                 });
         }, [])
 
-        return listClientes
+        return listSecretarias
     }
     const onGlobalFilterChange = (e) => {
         const value = e.target.value;
@@ -69,19 +68,17 @@ export default function ListClientes() {
         return (
             <>
                 <a className="btn bg-info btn-xs"
-                    data-toggle="modal" data-target="#edit-cliente"
+                    data-toggle="modal" data-target="#edit-secretaria"
                     onClick={() => { 
                         setFormIn(true)
-                        setClienteData(rowData)
-                        // setMatriculaCliente(props.matricula)
-                        // formRender(props.matricula) 
+                        setSecretariaData(rowData)
                         }}>
                     <i className="fas fa-edit"></i> Editar
                 </a>
                 &nbsp;
-                {/* Componente DelCliente */}
+                {/* Componente DelSecretaria */}
                 {/* ########################## */}
-                <DelCliente ClienteData={rowData}/>
+                <DelSecretaria SecretariaData={rowData}/>
                 {/* ########################## */}
             </>
         )
@@ -102,8 +99,8 @@ export default function ListClientes() {
                     </div>
 
                     <div>
-                        <a className="btn btn-app" data-toggle="modal" data-target="#add-cliente">
-                            <i className="fas fa-user-plus"></i> Adicionar Cliente
+                        <a className="btn btn-app" data-toggle="modal" data-target="#add-secretaria">
+                            <i className="fas fa-sitemap"></i> Adicionar Secretaria
                         </a>
                     </div>
 
@@ -111,28 +108,27 @@ export default function ListClientes() {
 
             </div>
 
-            <DataTable value={getClientes()} filters={filters} size="small" stripedRows paginator rows={5} totalRecords={5}>
+            <DataTable value={getSecretarias()} filters={filters} size="small" stripedRows paginator rows={5} totalRecords={5}>
                 <Column field="id" header="ID" />
-                <Column field="nome" header="Nome" sortable />
-                <Column field="matricula" header="Matrícula" />
-                <Column field="email" header="E-mail" />
+                <Column field="secretaria" header="Secretaria" sortable />
+                <Column field="acronimo" header="Sigla" />
                 <Column field="" header="." />
                 <Column body={statusBodyTemplate} />
             </DataTable>
 
-            {/* Componente AddCliente */}
+            {/* Componente AddSecretaria */}
             {/* ########################## */}
-            <AddCliente />
-            {/* ########################## */}
-
-            {/* Componente EditCliente */}
-            {/* ########################## */}
-            <EditCliente ClienteData={clienteData} />
+            {/* <AddSecretaria /> */}
             {/* ########################## */}
 
-            {/* Complemento Componente DelCliente */}
+            {/* Componente EditSecretaria */}
             {/* ########################## */}
-            <ConfirmDialog />
+            {/* <EditSecretaria SecretariaData={secretariaData} /> */}
+            {/* ########################## */}
+
+            {/* Complemento Componente DelSecretaria */}
+            {/* ########################## */}
+            {/* <ConfirmDialog /> */}
             {/* ########################## */}
 
         </div>

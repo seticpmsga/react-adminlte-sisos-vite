@@ -1,6 +1,9 @@
+import ListSecretarias from "./_ListSecretarias";
 
 function Secretarias() {
+
     return (
+        <div>
             <div className="content-wrapper">
                 {/* <!-- Content Header (Page header) --> */}
                 <section className="content-header">
@@ -25,36 +28,27 @@ function Secretarias() {
 
                     {/* <!-- Default box --> */}
                     <div className="card">
-                        <div className="card-header">
-                            <h3 className="card-title">Title</h3>
 
-                            <div className="card-tools">
-                                <button type="button" className="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                    <i className="fas fa-minus"></i>
-                                </button>
-                                <button type="button" className="btn btn-tool" data-card-widget="remove" title="Remove">
-                                    <i className="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div className="card-body">
-                            Start creating your amazing application!
-                        </div>
+                            {/* PrimeReact DataTable */}
+                                <ListSecretarias />
+                            {/* /. PrimeReact DataTable */}
+
                         {/* <!-- /.card-body --> */}
-                        <div className="card-footer">
-                            Footer
-                        </div>
-                        {/* <!-- /.card-footer--> */}
                     </div>
                     {/* <!-- /.card --> */}
 
                 </section>
                 {/* <!-- /.content --> */}
-            {/* <!-- /.content-wrapper --> */}
             </div>
-            
+            {/* <!-- /.content-wrapper --> */}
+
+            {/* Continuar em https://primereact.org/datatable/
+                # Advanced
+                Assistir: https://www.youtube.com/watch?v=NbhoeLj6lBs
+            */}
+
+        </div>
     );
 }
 
 export default Secretarias;
-

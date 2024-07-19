@@ -5,18 +5,18 @@ import { useNavigate } from "react-router-dom"
 import { confirmDialog } from 'primereact/confirmdialog'
 import { Toast } from 'primereact/toast'
 
-export default function DelCliente(props) {
-    const toastDelCliente = useRef(null);
+export default function DelSecretaria(props) {
+    const toastDelSecretaria = useRef(null);
     let navigate = useNavigate()
 
     const accept = () => {
-        patchCliente(props.ClienteData)
+        patchSecretaria(props.SecretariaData)
         setTimeout(() => { navigate(0) }, 2000);
-        toastDelCliente.current.show({ severity: 'success', summary: 'Confirmado', detail: 'Cliente excluído com sucesso!', life: 2000 });
+        toastDelSecretaria.current.show({ severity: 'success', summary: 'Confirmado', detail: 'Secretaria excluída com sucesso!', life: 2000 });
     }
 
     const reject = () => {
-        toastDelCliente.current.show({ severity: 'secondary', summary: 'Cancelado', detail: 'Operação cancelada!', life: 2000 });
+        toastDelSecretaria.current.show({ severity: 'secondary', summary: 'Cancelado', detail: 'Operação cancelada!', life: 2000 });
     }
 
     const confirm = () => {
@@ -24,8 +24,8 @@ export default function DelCliente(props) {
             header: 'Confirmação de Exclusão',
             message: (
                 <div>
-                    <p><i className='pi pi-exclamation-triangle'style={{ color: 'red' }}/>&nbsp;Deseja realmente excluir o(a) cliente </p>
-                    <p>{props.ClienteData['nome']} ?</p>
+                    <p><i className='pi pi-exclamation-triangle'style={{ color: 'red' }}/>&nbsp;Deseja realmente excluir a Secretaria </p>
+                    <p>{props.SecretariaData['secretaria']} ?</p>
                 </div>
             ),
             icon: '',
@@ -39,11 +39,11 @@ export default function DelCliente(props) {
         })
     }
 
-    const patchCliente = async (clienteData) => {
-        const clienteAtivo = { "ativo": false }
+    const patchSecretaria = async (secretariaData) => {
+        const secretariaAtiva = { "ativo": false }
 
         try {
-            const response = await api.patch(`/clientes/${clienteData.id}/`, clienteAtivo);
+            const response = await api.patch(`/secretarias/${secretariaData.id}/`, secretariaAtiva);
             if (response) {
                 console.log(response.status);
             }
@@ -54,7 +54,7 @@ export default function DelCliente(props) {
 
     return (
         <>
-            <Toast ref={toastDelCliente} />
+            <Toast ref={toastDelSecretaria} />
             <a className="btn bg-warning btn-xs" onClick={confirm}>
                 <i className="fas fa fa-trash"></i> Excluir
             </a>

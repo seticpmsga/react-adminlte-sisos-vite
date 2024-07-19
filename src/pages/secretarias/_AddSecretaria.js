@@ -8,12 +8,7 @@ import './clientes.css'
 
 import { useForm } from "react-hook-form"
 
-function AddCliente() {
-    /**
-     * Observação: 
-     * Rota API REST Kotlin http://localhost:8080/clientes/matricula/19813
-     * Localiza o cliente através da matrícula 
-     */
+function AddSecretaria() {
 
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm()
     const toast = useRef(null)
@@ -22,14 +17,14 @@ function AddCliente() {
     const onSubmit = async (data) => {
 
         try {
-            const response = await api.get('/clientes?matricula=' + data.matricula)
+            const response = await api.get(`/secretarias/${data.id}`)
 
             if (response.data.length != 1) {
-                postCliente(data)
-                toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Usuário cadastrado !', life: 3000 })
+                postSecretaria(data)
+                toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Secretaria cadastrada !', life: 3000 })
             } else {
                 console.log(response.status)
-                toast.current.show({ severity: 'error', summary: 'Erro de matrícula', detail: 'Matrícula informada já existe !', life: 3000 })
+                toast.current.show({ severity: 'error', summary: 'Erro de cadastro', detail: 'Erro de cadastro !', life: 3000 })
             }
 
         } catch (error) {
@@ -38,9 +33,9 @@ function AddCliente() {
 
     }
 
-    const postCliente = async (clienteData) => {
+    const postSecretaria = async (secretariaData) => {
         try {
-            const response = await api.post('/clientes',clienteData);
+            const response = await api.post('/Secretarias',secretariaData);
             if(response) {
                 console.log(response.status);
             }
@@ -50,7 +45,7 @@ function AddCliente() {
     }
 
     return (
-        <div className="modal fade" id="add-cliente">
+        <div className="modal fade" id="add-secretaria">
             <div className="modal-dialog modal-lg">
                 <div className="modal-content">
 
@@ -74,32 +69,26 @@ function AddCliente() {
                                 <p className='p-info'>[ * Campos Obrigatórios ]</p>
 
                                 <div className="form-group">
-                                    <label htmlFor="InputNome">Nome <i style={{ color: '#EF5350' }}>*</i></label>
-                                    <input type="text" className="form-control" id="InputNome"
-                                    placeholder="Digite seu nome" {...register("nome", { required: true })} />
+                                    <label htmlFor="InputSecretaria">Nome da Secretaria <i style={{ color: '#EF5350' }}>*</i></label>
+                                    <input type="text" className="form-control" id="InputSecretaria"
+                                    placeholder="Secretaia Municipal ..." {...register("secretaria", { required: true })} />
                                     {/* errors will return when field validation fails  */}
-                                    {errors.nome && <p className='p-alert'><span><i className="pi pi-exclamation-triangle"></i>  Campo obrigatório !</span></p>}
+                                    {errors.secretaria && <p className='p-alert'><span><i className="pi pi-exclamation-triangle"></i>  Campo obrigatório !</span></p>}
                                 </div>
 
                                 <div className="row">
 
                                     <div className="col-4">
                                         <div className="form-group">
-                                            <label htmlFor="InputMtricula">Matrícula <i style={{ color: '#EF5350' }}>*</i></label>
-                                            <input type="text" className="form-control" id="InputMtricula"
-                                            placeholder="12345" {...register("matricula", { required: true })} />
+                                            <label htmlFor="InputAcronimo">Sigla <i style={{ color: '#EF5350' }}>*</i></label>
+                                            <input type="text" className="form-control" id="InputAcronimo"
+                                            placeholder="Ex.: SEMURB ..." {...register("acronimo", { required: true })} />
                                             {/* errors will return when field validation fails  */}
-                                            {errors.matricula && <p className='p-alert'><span><i className="pi pi-exclamation-triangle"></i>  Campo obrigatório !</span></p>}
+                                            {errors.acronimo && <p className='p-alert'><span><i className="pi pi-exclamation-triangle"></i>  Campo obrigatório !</span></p>}
                                         </div>
                                     </div>
 
-                                    <div className="col-8">
-                                        <div className="form-group">
-                                            <label htmlFor="InputEmail">E-mail</label>
-                                            <input type="email" className="form-control" id="InputEmail"
-                                            placeholder="exemplo@email.com" {...register("email")} />
-                                        </div>
-                                    </div>
+                                    <div className="col-8"></div>
 
                                 </div>
 

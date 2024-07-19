@@ -4,16 +4,11 @@ import api from '../../service/connection'
 import { useNavigate } from "react-router-dom"
 
 import 'primeicons/primeicons.css'
-import './clientes.css'
+import './secretarias.css'
 
 import { useForm } from "react-hook-form"
 
-function EditCliente(props) {
-    /**
-     * Observação: 
-     * Rota API REST Kotlin http://localhost:8080/clientes/matricula/19813
-     * Localiza o cliente através da matrícula 
-     */
+function EditSecretaria(props) {
 
     const { register, handleSubmit, reset ,control, setValue, watch, formState: { errors } } = useForm({ mode: 'onBlur' })
     const toast = useRef(null)
@@ -22,11 +17,11 @@ function EditCliente(props) {
     const onSubmit = async (data) => {
 
         try {
-            const response = await api.get('/clientes?matricula=' + data.matricula)
+            const response = await api.get(`/secretarias/${data.id}`)
 
             if (response.data.length == 1) {
-                putCliente(data)
-                toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Usuário cadastrado !', life: 2000 })
+                putSecretaria(data)
+                toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Secretaria cadastrado !', life: 2000 })
             } else {
                 console.log("Retorno:", response.data.length, "POST não recebe dados.")
                 toast.current.show({ severity: 'error', summary: 'Erro de matrícula', detail: 'Matrícula informada já existe !', life: 2000 })
@@ -38,9 +33,9 @@ function EditCliente(props) {
 
     }
 
-    const putCliente = async (clienteData) => {
+    const putSecretaria = async (secretariaData) => {
         try {
-            const response = await api.put(`/clientes/${clienteData.id}`, clienteData);
+            const response = await api.put(`/secretarias/${secretariaData.id}`, secretariaData);
             if (response) {
                 console.log(response.status);
             }
@@ -50,22 +45,20 @@ function EditCliente(props) {
     }
 
     useEffect(() => {
-        if (props.ClienteData) {
-            setValue("id", props.ClienteData['id']);
-            setValue("nome", props.ClienteData['nome']);
-            setValue("matricula", props.ClienteData['matricula']);
-            setValue("email", props.ClienteData['email']);
-            setValue("ativo", props.ClienteData['ativo']);
+        if (props.SecretariaData) {
+            setValue("id", props.SecretariaData['id']);
+            setValue("secretaria", props.SecretariaData['secretaria']);
+            setValue("acronimo", props.SecretariaData['acronimo']);
         }
-    }, [props.ClienteData]);
+    }, [props.SecretariaData]);
 
     return (
-        <div className="modal fade" id="edit-cliente">
+        <div className="modal fade" id="edit-secretaria">
             <div className="modal-dialog modal-lg">
                 <div className="modal-content">
 
                     <div className="modal-header">
-                        <h4 className="modal-title">Editar Usuário</h4>
+                        <h4 className="modal-title">Editar Secretaria</h4>
                         <button type="button" className="close" data-dismiss="modal"
                             aria-label="Close" onClick={() => {
                                     reset(undefined, { keepDirtyValues: false })
@@ -86,9 +79,9 @@ function EditCliente(props) {
                                 <div className="form-group">
                                     <label htmlFor="InputNome">Nome <i style={{ color: '#EF5350' }}>*</i></label>
                                     <input type="text" className="form-control" id="InputNome" 
-                                    placeholder="Digite seu nome" {...register("nome", { required: true })} />
+                                    placeholder="Nome da secretaria" {...register("secretaria", { required: true })} />
                                     {/* errors will return when field validation fails  */}
-                                    {errors.nome && <p className='p-alert'><span><i className="pi pi-exclamation-triangle"></i>  Campo obrigatório !</span></p>}
+                                    {errors.secretaria && <p className='p-alert'><span><i className="pi pi-exclamation-triangle"></i>  Campo obrigatório !</span></p>}
 
                                     <input type="text" className="form-control" id="InputId"
                                     {...register("id", { required: true })} hidden/>
@@ -99,19 +92,11 @@ function EditCliente(props) {
 
                                     <div className="col-4">
                                         <div className="form-group">
-                                            <label htmlFor="InputMtricula">Matrícula <i style={{ color: '#EF5350' }}>*</i></label>
-                                            <input type="text" className="form-control" id="InputMtricula"
-                                            placeholder="12345" {...register("matricula", { required: true })} />
+                                            <label htmlFor="InputAcronimo">Sigla <i style={{ color: '#EF5350' }}>*</i></label>
+                                            <input type="text" className="form-control" id="InputAcronimo"
+                                            placeholder="Ex.: SECOM" {...register("acronimo", { required: true })} />
                                             {/* errors will return when field validation fails  */}
-                                            {errors.matricula && <p className='p-alert'><span><i className="pi pi-exclamation-triangle"></i>  Campo obrigatório !</span></p>}
-                                        </div>
-                                    </div>
-
-                                    <div className="col-8">
-                                        <div className="form-group">
-                                            <label htmlFor="InputEmail">E-mail</label>
-                                            <input type="email" className="form-control" id="InputEmail"
-                                            placeholder="exemplo@email.com" {...register("email")} />
+                                            {errors.acronimo && <p className='p-alert'><span><i className="pi pi-exclamation-triangle"></i>  Campo obrigatório !</span></p>}
                                         </div>
                                     </div>
 
@@ -138,4 +123,4 @@ function EditCliente(props) {
     )
 }
 
-export default EditCliente
+export default EditSecretaria
