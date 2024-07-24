@@ -14,16 +14,19 @@ function EditSecretaria(props) {
     const toast = useRef(null)
     let navigate = useNavigate()
 
-    const onSubmit = async (data) => {
+    const onSubmit = async (rowData) => {
 
         try {
-            const response = await api.get(`/secretarias/${data.id}`)
+            const response = await api.get(`/secretarias/${rowData.id}`)
+            console.log(response.status)
 
-            if (response.data.length == 1) {
-                putSecretaria(data)
+            if (response.status == 200) {
+                putSecretaria(rowData)
                 toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Secretaria cadastrado !', life: 2000 })
+                setTimeout(() => { $('#edit-secretaria').modal('hide') }, 2000)
+                setTimeout(() => { navigate(0) }, 2000)
             } else {
-                console.log("Retorno:", response.data.length, "POST não recebe dados.")
+                console.log("Retorno:", response.status, "POST não recebe dados.")
                 toast.current.show({ severity: 'error', summary: 'Erro de matrícula', detail: 'Matrícula informada já existe !', life: 2000 })
             }
 
@@ -62,7 +65,7 @@ function EditSecretaria(props) {
                         <button type="button" className="close" data-dismiss="modal"
                             aria-label="Close" onClick={() => {
                                     reset(undefined, { keepDirtyValues: false })
-                                    setTimeout(() => { navigate(0) }, 1000);
+                                    setTimeout(() => { navigate(0) }, 2000)
                                 }}>
                             <span aria-hidden="true">×</span>
                         </button>

@@ -1,9 +1,9 @@
 {
   "clientes": [
     {
+      "nome": "ABEL SOARES FERREIRA",
       "id": "1",
       "matricula": "05854",
-      "nome": "ABEL SOARES FERREIRA",
       "email": null,
       "ativo": true
     },
@@ -22081,137 +22081,162 @@
   ],
   "secretarias": [
     {
-      "id": "1",
       "secretaria": "Secretaria Municipal de Finanças",
+      "id": "1",
       "acronimo": "SEMAF"
     },
     {
       "id": "2",
       "secretaria": "Controladoria Geral do Município",
-      "acronimo": "CGM"
+      "acronimo": "CGM",
+      "ativo": true
     },
     {
       "id": "3",
       "secretaria": "Secretaria Municipal de Licitação, Contratos, Compras e Convênios",
-      "acronimo": "SEMLICC"
+      "acronimo": "SEMLICC",
+      "ativo": true
     },
     {
       "id": "4",
       "secretaria": "Setor de Tecnologia da Informação",
-      "acronimo": "SETIC"
+      "acronimo": "SETIC",
+      "ativo": true
     },
     {
       "id": "5",
       "secretaria": "Secretaria Municipal de Saúde",
-      "acronimo": "SMS"
+      "acronimo": "SMS",
+      "ativo": true
     },
     {
       "id": "6",
       "secretaria": "Secretaria Municipal de Administração e dos Recursos Humanos",
-      "acronimo": "SEMARH"
+      "acronimo": "SEMARH",
+      "ativo": true
     },
     {
       "id": "7",
       "secretaria": "Secretaria Municipal do Trabalho, Assistência Social e Cidadania",
-      "acronimo": "SEMTASC"
+      "acronimo": "SEMTASC",
+      "ativo": true
     },
     {
       "id": "8",
       "secretaria": "Secretaria Municipal do Idoso e da Pessoa com Deficiência",
-      "acronimo": "SEMIPD"
+      "acronimo": "SEMIPD",
+      "ativo": true
     },
     {
       "id": "9",
       "secretaria": "Secretaria Municipal de Planejamento e Orçamento Participativo",
-      "acronimo": "SEMPLA"
+      "acronimo": "SEMPLA",
+      "ativo": true
     },
     {
       "id": "10",
       "secretaria": "Secretaria Municipal de Governo e Projetos Especiais",
-      "acronimo": "SEMGOPE"
+      "acronimo": "SEMGOPE",
+      "ativo": true
     },
     {
       "id": "11",
       "secretaria": "Secretaria Municipal de Educação",
-      "acronimo": "SME"
+      "acronimo": "SME",
+      "ativo": true
     },
     {
       "id": "12",
       "secretaria": "Secretaria Municipal de Juventude, Esporte e Lazer",
-      "acronimo": "SEMJEL"
+      "acronimo": "SEMJEL",
+      "ativo": true
     },
     {
       "id": "13",
       "secretaria": "Secretaria Municipal de Agropecuária e Desenvolvimento Agrário",
-      "acronimo": "SEMADA"
+      "acronimo": "SEMADA",
+      "ativo": true
     },
     {
       "id": "14",
       "secretaria": "Secretaria Municipal de Habitação, Regularização Fundiária e Saneamento",
-      "acronimo": "SEHAB"
+      "acronimo": "SEHAB",
+      "ativo": true
     },
     {
       "id": "15",
       "secretaria": "Secretaria Municipal de Tributação",
-      "acronimo": "SEMUT"
+      "acronimo": "SEMUT",
+      "ativo": true
     },
     {
       "id": "16",
       "secretaria": "Secretaria Municipal de Relações Institucionais",
-      "acronimo": "SEMURI"
+      "acronimo": "SEMURI",
+      "ativo": true
     },
     {
       "id": "17",
       "secretaria": "Secretaria Municipal de Infraestrutura",
-      "acronimo": "SEMINFRA"
+      "acronimo": "SEMINFRA",
+      "ativo": true
     },
     {
       "id": "18",
       "secretaria": "Procuradoria Geral do Município",
-      "acronimo": "PGM"
+      "acronimo": "PGM",
+      "ativo": true
     },
     {
       "id": "19",
       "secretaria": "Secretaria Municipal de Defesa Social",
-      "acronimo": "SEDES"
+      "acronimo": "SEDES",
+      "ativo": true
     },
     {
       "id": "20",
       "secretaria": "Secretaria Municipal de Desenvolvimento Econômico e Turismo",
-      "acronimo": "SEMDET"
+      "acronimo": "SEMDET",
+      "ativo": true
     },
     {
       "id": "21",
       "secretaria": "Secretaria Municipal de Serviços Urbanos",
-      "acronimo": "SEMSUR"
+      "acronimo": "SEMSUR",
+      "ativo": true
     },
     {
       "id": "22",
       "secretaria": "Secretaria Municipal de Meio Ambiente e Urbanismo",
-      "acronimo": "SEMURB"
+      "acronimo": "SEMURB",
+      "ativo": true
     },
     {
       "id": "23",
       "secretaria": "Secretaria Municipal Extraordinária",
-      "acronimo": "SEMEX"
+      "acronimo": "SEMEX",
+      "ativo": true
     },
     {
       "id": "24",
       "secretaria": "Instituto de Previdência do Servidor Municipal",
-      "acronimo": "IPREV"
+      "acronimo": "IPREV",
+      "ativo": true
     },
     {
       "id": "25",
       "secretaria": "Fundação Cultural Dona Militana",
-      "acronimo": "FCDM"
+      "acronimo": "FCDM",
+      "ativo": true
     },
     {
       "id": "26",
       "secretaria": "Serviço Autônomo de Água e Esgoto",
-      "acronimo": "SAAE"
+      "acronimo": "SAAE",
+      "ativo": true
     },
     {
-      "id": "27",
+      "id": "4907",
       "secretaria": "Departamento Municipal de Trânsito",
       "acronimo": "DEMUTRAN"
     }

@@ -27,6 +27,8 @@ function EditCliente(props) {
             if (response.data.length == 1) {
                 putCliente(data)
                 toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Usuário cadastrado !', life: 2000 })
+                setTimeout(() => { $('#edit-cliente').modal('hide') }, 2000)
+                setTimeout(() => { navigate(0) }, 2000)
             } else {
                 console.log("Retorno:", response.data.length, "POST não recebe dados.")
                 toast.current.show({ severity: 'error', summary: 'Erro de matrícula', detail: 'Matrícula informada já existe !', life: 2000 })

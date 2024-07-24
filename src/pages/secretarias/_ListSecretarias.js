@@ -17,7 +17,8 @@ export default function ListSecretarias() {
 
     const [filters, setFilters] = useState({
         global: { value: null, matchMode: FilterMatchMode.CONTAINS },
-        secretarias: { value: null, matchMode: FilterMatchMode.STARTS_WITH }
+        secretarias: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
+        ativo: { value: true, matchMode: FilterMatchMode.EQUALS }
     })
 
     const [globalFilterValue, setGlobalFilterValue] = useState('')
@@ -118,17 +119,17 @@ export default function ListSecretarias() {
 
             {/* Componente AddSecretaria */}
             {/* ########################## */}
-            {/* <AddSecretaria /> */}
+            <AddSecretaria />
             {/* ########################## */}
 
             {/* Componente EditSecretaria */}
             {/* ########################## */}
-            {/* <EditSecretaria SecretariaData={secretariaData} /> */}
+            <EditSecretaria SecretariaData={secretariaData} />
             {/* ########################## */}
 
             {/* Complemento Componente DelSecretaria */}
             {/* ########################## */}
-            {/* <ConfirmDialog /> */}
+            <ConfirmDialog />
             {/* ########################## */}
 
         </div>

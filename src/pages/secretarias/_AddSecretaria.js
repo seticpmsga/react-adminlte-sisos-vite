@@ -4,7 +4,7 @@ import api from '../../service/connection'
 import { useNavigate } from "react-router-dom";
 
 import 'primeicons/primeicons.css'
-import './clientes.css'
+import './secretarias.css'
 
 import { useForm } from "react-hook-form"
 
@@ -17,25 +17,22 @@ function AddSecretaria() {
     const onSubmit = async (data) => {
 
         try {
-            const response = await api.get(`/secretarias/${data.id}`)
-
-            if (response.data.length != 1) {
-                postSecretaria(data)
-                toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Secretaria cadastrada !', life: 3000 })
-            } else {
-                console.log(response.status)
-                toast.current.show({ severity: 'error', summary: 'Erro de cadastro', detail: 'Erro de cadastro !', life: 3000 })
-            }
-
+            const response = await api.post('/secretarias',data);
+            toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Secretaria cadastrada !', life: 2000 })
+            setTimeout(() => { $('#add-secretaria').modal('hide') }, 2000)
+            setTimeout(() => { navigate(0) }, 2000)
+            console.log(response.status)
         } catch (error) {
-            console.log(error.message)
+            console.log(response.status)
+            toast.current.show({ severity: 'error', summary: 'Erro de cadastro', detail: 'Erro de cadastro !', life: 2000 })
+            console.error(error.message)
         }
 
     }
 
     const postSecretaria = async (secretariaData) => {
         try {
-            const response = await api.post('/Secretarias',secretariaData);
+            const response = await api.post('/secretarias',secretariaData);
             if(response) {
                 console.log(response.status);
             }
@@ -54,7 +51,7 @@ function AddSecretaria() {
                         <button type="button" className="close" data-dismiss="modal" 
                         aria-label="Close" onClick={() => {
                                 reset(undefined, { keepDirtyValues: false })
-                                setTimeout(() => { navigate(0) }, 1000);
+                                setTimeout(() => { navigate(0) }, 2000)
                             }}>
                             <span aria-hidden="true">×</span>
                         </button>
@@ -113,4 +110,4 @@ function AddSecretaria() {
     )
 }
 
-export default AddCliente
+export default AddSecretaria

@@ -27,6 +27,8 @@ function AddCliente() {
             if (response.data.length != 1) {
                 postCliente(data)
                 toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Usuário cadastrado !', life: 3000 })
+                setTimeout(() => { $('#add-cliente').modal('hide') }, 3000)
+                setTimeout(() => { navigate(0) }, 3000)
             } else {
                 console.log(response.status)
                 toast.current.show({ severity: 'error', summary: 'Erro de matrícula', detail: 'Matrícula informada já existe !', life: 3000 })

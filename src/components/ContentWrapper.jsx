@@ -7,7 +7,7 @@ import Header from "./Header";
 import Dashboard from "../pages/dashboard/Content";
 import OrdenServico from "../pages/ordenservico/DataTableOs";
 import TiposServico from "../pages/tiposservico/DataTableTiposServico";
-import Secretarias from "../pages/secretarias/ContentClientes";
+import Secretarias from "../pages/secretarias/ContentSecretarias";
 import Clientes from "../pages/clientes/ContentClientes";
 import Orgao from "../pages/orgao/DataTableOrgao";
 
