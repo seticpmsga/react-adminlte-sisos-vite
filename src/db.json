@@ -22072,19 +22072,21 @@
       "ativo": true
     },
     {
-      "id": "3154",
-      "matricula": "19783",
+      "id": "9c9b",
       "nome": "PATRICIA MARIA BEVENUTO DE SOUSA",
-      "email": null,
+      "matricula": "19783",
+      "email": "",
+      "ativo": true
+    },
+    {
+      "id": "a6ba",
+      "nome": "CARLOS AUGUSTOS MORAES NOBRE",
+      "matricula": "456798",
+      "email": "caugustusmn@gmail.com",
       "ativo": true
     }
   ],
   "secretarias": [
-    {
-      "secretaria": "Secretaria Municipal de Finanças",
-      "id": "1",
-      "acronimo": "SEMAF"
-    },
     {
       "id": "2",
       "secretaria": "Controladoria Geral do Município",
@@ -22236,9 +22238,16 @@
       "ativo": true
     },
     {
-      "id": "4907",
+      "id": "5029",
+      "secretaria": "Secretaria Municipal de Finanças",
+      "acronimo": "SEMAF",
+      "ativo": true
+    },
+    {
+      "id": "f3dd",
       "secretaria": "Departamento Municipal de Trânsito",
-      "acronimo": "DEMUTRAN"
+      "acronimo": "DEMUTRAN",
+      "ativo": true
     }
   ]
 }

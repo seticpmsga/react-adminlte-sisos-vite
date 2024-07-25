@@ -15,7 +15,14 @@ function AddCliente() {
      * Localiza o cliente através da matrícula 
      */
 
-    const { register, handleSubmit, reset, watch, formState: { errors } } = useForm()
+    const { register, handleSubmit, reset, watch, formState: { errors } } = useForm({
+        defaultValues: {
+          nome: "",
+          matricula: "",
+          email: "",
+          ativo: true,
+        }
+      })
     const toast = useRef(null)
     let navigate = useNavigate()
 

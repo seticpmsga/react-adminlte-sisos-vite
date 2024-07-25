@@ -10,7 +10,13 @@ import { useForm } from "react-hook-form"
 
 function AddSecretaria() {
 
-    const { register, handleSubmit, reset, watch, formState: { errors } } = useForm()
+    const { register, handleSubmit, reset, watch, formState: { errors } } = useForm({
+        defaultValues: {
+            secretaria: "",
+            acronimo: "",
+            ativo: true
+        }
+    })
     const toast = useRef(null)
     let navigate = useNavigate()
 
